@@ -31,8 +31,27 @@
   background-color: #f3f3f3;
   -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
           box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
+}
+
+.day-box:hover .tem-svg circle {
+  opacity: 1;
+}
+
+.day-box:hover .tem-svg polyline {
+  opacity: 1;
+}
+
+.day-box:hover .tem-svg text {
+  opacity: 1;
+  top: 0px;
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
+}
+
+.day-box:hover .tem-svg line {
+  opacity: 1;
 }
 
 .day-box:hover .bottom {
@@ -224,17 +243,23 @@
 
 .tem-svg {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .tem-svg circle {
   fill: #f3f3f3;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 0.2;
 }
 
 .tem-svg polyline {
   stroke: #f3f3f3;
   stroke-width: 1px;
   fill: none;
+  -webkit-transition: 1.5s;
+  transition: 1.5s;
+  opacity: 0.2;
 }
 
 .tem-svg text {
@@ -242,6 +267,17 @@
   -webkit-transform: translateX(-6px) translateY(22px);
           transform: translateX(-6px) translateY(22px);
   font-size: 12px;
+  -webkit-transition: 0.75s;
+  transition: 0.75s;
+  opacity: 0;
+}
+
+.tem-svg line {
+  stroke: #fff;
+  stroke-width: 1px;
+  -webkit-transition: 0.75s;
+  transition: 0.75s;
+  opacity: 0;
 }
 
 .rain {
@@ -325,6 +361,9 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   overflow: hidden;
   -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
           box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
@@ -350,6 +389,7 @@
 .day-weather h3 {
   width: 100%;
   height: 20px;
+  margin: 5px 0px;
   font-size: 12px;
   color: rgba(51, 51, 51, 0.6);
   font-weight: 600;

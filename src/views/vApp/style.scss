@@ -16,10 +16,30 @@
   max-width: 400px;
   background-color: $color_white;
   box-shadow: 0px 0px 20px rgba($color: black, $alpha: 0.3);
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
 
   &:hover {
+    .tem-svg {
+      circle {
+        opacity: 1;
+      }
+
+      polyline {
+        opacity: 1;
+      }
+
+      text {
+        opacity: 1;
+        top: 0px;
+        transition-delay: 0.5s;
+      }
+
+      line {
+        opacity: 1;
+      }
+    }
+
     .bottom {
       height: 100px;
     }
@@ -144,21 +164,37 @@
 }
 
 .tem-svg {
-  @include size(100%, auto);
+  @include size(100%, 100%);
   circle {
     fill: $color_white;
+
+    transition: 0.5s;
+    opacity: 0.2;
   }
 
   polyline {
     stroke: $color_white;
     stroke-width: 1px;
     fill: none;
+
+    transition: 1.5s;
+    opacity: 0.2;
   }
 
   text {
     fill: $color_white;
     transform: translateX(-6px) translateY(22px);
     font-size: 12px;
+
+    transition: 0.75s;
+    opacity: 0;
+  }
+
+  line {
+    stroke: #fff;
+    stroke-width: 1px;
+    transition: 0.75s;
+    opacity: 0;
   }
 }
 
@@ -217,6 +253,7 @@
   // @include flex-layout(row, c, center);
   display: flex;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
   box-shadow: 0px 0px 20px rgba($color: black, $alpha: 0.3);
   border-radius: 0px 0px 5px 5px;
@@ -235,7 +272,7 @@
 
   h3 {
     @include size(100%, 20px);
-
+    margin: 5px 0px;
     font-size: 12px;
     color: rgba($color: $color_black, $alpha: 0.6);
     font-weight: 600;
