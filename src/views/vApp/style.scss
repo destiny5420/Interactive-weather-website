@@ -79,6 +79,21 @@
   }
 }
 
+.loading-box {
+  @include independent('', rgba(black, 0.75), 1000);
+  @include size(100%, 100%);
+  @include flex-layout(row, center, center);
+  border-radius: 5px;
+}
+
+.loading {
+  @include size(30px, 30px);
+
+  rect {
+    fill: #2f76fa;
+  }
+}
+
 .top {
   @include size(100%, 330px);
   position: relative;

@@ -1,7 +1,9 @@
+import cLoading from '@/components/cLoading/index.vue';
+
 export default {
   name: 'vApp',
   props: {},
-  // components: {},
+  components: { cLoading },
   data: function() {
     return {
       points: [
@@ -13,6 +15,7 @@ export default {
         { x: 290, value: 29 },
         { x: 340, value: 20 },
       ],
+      isLoading: false,
     };
   },
   // methods: {
