@@ -22,75 +22,23 @@
         </g>
       </svg>
       <div class="text-area">
-        <div class="temperature">26</div>
-        <div class="info">
-          <div class="address">台中市南屯區修井里</div>
-          <div class="time">星期四早上8:00</div>
-        </div>
+        <template v-if="weatherData">
+          <div class="temperature">{{ weatherData[0].date }}</div>
+          <div class="info">
+            <div class="address">{{ location }}</div>
+            <div class="time">星期{{ dataToTraditional(weatherData[0].day) }}早上6:00</div>
+          </div>
+        </template>
       </div>
     </div>
     <div class="bottom">
-      <div class="day-weather">
-        <h3>Mon</h3>
-        <svg viewBox="-50,-50,100,100">
-          <circle class="sun" cx="0" cy="0" r="22"></circle>
-          <circle class="cloud" cx="0" cy="30" r="20"></circle>
-          <circle class="cloud" cx="-15" cy="30" r="20"></circle>
-          <circle class="cloud" cx="-30" cy="30" r="20"></circle>
-          <circle class="cloud" cx="-25" cy="10" r="15"></circle>
-          <circle class="cloud" cx="-7" cy="15" r="15"></circle>
-        </svg>
-      </div>
-      <div class="day-weather">
-        <h3>TUE</h3>
-        <svg viewBox="-50,-50,100,100">
-          <circle class="sun" cx="0" cy="0" r="22"></circle>
-        </svg>
-      </div>
-      <div class="day-weather">
-        <h3>WED</h3>
-        <svg viewBox="-63,-30,100,100">
-          <line class="rain" x1="-35" y1="15" x2="-35" y2="35"></line>
-          <line class="rain rain2" x1="-14" y1="5" x2="-14" y2="25"></line>
-          <line class="rain rain3" x1="0" y1="20" x2="0" y2="45"></line>
-          <circle class="cloud" cx="0" cy="30" r="20"></circle>
-          <circle class="cloud" cx="-15" cy="30" r="20"></circle>
-          <circle class="cloud" cx="-30" cy="30" r="20"></circle>
-          <circle class="cloud" cx="-25" cy="10" r="15"></circle>
-          <circle class="cloud" cx="-7" cy="15" r="15"></circle>
-        </svg>
-      </div>
-      <div class="day-weather">
-        <h3>THU</h3>
-        <svg viewBox="-63,-30,100,100">
-          <line class="rain" x1="-35" y1="15" x2="-35" y2="35"></line>
-          <line class="rain rain2" x1="-14" y1="5" x2="-14" y2="25"></line>
-          <line class="rain rain3" x1="0" y1="20" x2="0" y2="45"></line>
-          <circle class="cloud" cx="0" cy="30" r="20"></circle>
-          <circle class="cloud" cx="-15" cy="30" r="20"></circle>
-          <circle class="cloud" cx="-30" cy="30" r="20"></circle>
-          <circle class="cloud" cx="-25" cy="10" r="15"></circle>
-          <circle class="cloud" cx="-7" cy="15" r="15"></circle>
-        </svg>
-      </div>
-      <div class="day-weather">
-        <h3>FRI</h3>
-        <svg viewBox="-50,-50,100,100">
-          <circle class="sun" cx="0" cy="0" r="22"></circle>
-        </svg>
-      </div>
-      <div class="day-weather">
-        <h3>SAT</h3>
-        <svg viewBox="-50,-50,100,100">
-          <circle class="sun" cx="0" cy="0" r="22"></circle>
-        </svg>
-      </div>
-      <div class="day-weather">
-        <h3>SUN</h3>
-        <svg viewBox="-50,-50,100,100">
-          <circle class="sun" cx="0" cy="0" r="22"></circle>
-        </svg>
-      </div>
+      <component
+        :is="currentWeather(index)"
+        :day="dateToString(item.day)"
+        v-if="weatherData"
+        v-for="(item, index) in weatherData"
+        :key="index"
+      ></component>
     </div>
   </div>
 </div>
