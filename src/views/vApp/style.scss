@@ -102,12 +102,23 @@
   animation: daylight 20s both;
   border-radius: 5px 5px 0px 0px;
 
+  .weather {
+    @include independent('', transparent, 1);
+    @include size(150px, 150px);
+
+    right: 50px;
+    bottom: 50px;
+  }
+
   .cloud {
     @include size(100px, 36px);
     @include independent('', $color_white, 1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: relative;
     box-shadow: 0px 0px 20px rgba($color: black, $alpha: 0.5);
-    right: 100px;
-    bottom: 50px;
+
     border-radius: 20px;
     animation: cloudDrift 5s infinite linear;
 
@@ -131,6 +142,53 @@
     }
   }
 
+  .sun {
+    @include independent('', transparent, 1);
+    @include size(150px, 150px);
+    top: 50%;
+    left: 50%;
+    transform-origin: 0 0;
+    transform: rotateZ(0deg) translate(-50%, -50%);
+
+    animation: sunRotate 60s linear infinite;
+
+    svg {
+      @include size(150px, 150px);
+
+      circle {
+        fill: $color_yellow;
+        stroke: rgba($color: $color_yellow, $alpha: 0.75);
+        stroke-width: 35px;
+        stroke-dasharray: 5px;
+        animation: sunShineScale 2s ease-in-out infinite;
+      }
+    }
+  }
+
+  @keyframes sunRotate {
+    0% {
+      transform: rotateZ(0deg) translate(-50%, -50%);
+    }
+
+    100% {
+      transform: rotateZ(360deg) translate(-50%, -50%);
+    }
+  }
+
+  @keyframes sunShineScale {
+    0% {
+      stroke-width: 35px;
+    }
+
+    50% {
+      stroke-width: 30px;
+    }
+
+    100% {
+      stroke-width: 35px;
+    }
+  }
+
   @keyframes daylight {
     0% {
       background-position: 100% 30%;
@@ -143,15 +201,15 @@
 
   @keyframes cloudDrift {
     0% {
-      transform: translateY(0px);
+      transform: translateY(10px) translate(-50%, -50%);
     }
 
     50% {
-      transform: translateY(-20px);
+      transform: translateY(-5px) translate(-50%, -50%);
     }
 
     100% {
-      transform: translateY(0px);
+      transform: translateY(10px) translate(-50%, -50%);
     }
   }
 }

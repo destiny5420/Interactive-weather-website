@@ -3,10 +3,17 @@
     <cLoading :active.sync="isLoading" />
     <div class="top">
       <div class="moon"></div>
-      <div class="cloud">
-        <div class="rain"></div>
-        <div class="rain rain2"></div>
-        <div class="rain rain3"></div>
+      <div class="weather">
+        <div class="cloud">
+          <div class="rain"></div>
+          <div class="rain rain2"></div>
+          <div class="rain rain3"></div>
+        </div>
+        <div class="sun">
+          <svg viewBox="-75 -75 150 150">
+            <circle cx="0" cy="0" r="45" />
+          </svg>
+        </div>
       </div>
       <svg class="tem-svg">
         <g v-for="(item, index) in points" :key="index">
@@ -26,7 +33,7 @@
           <div class="temperature">{{ weatherData[0].date }}</div>
           <div class="info">
             <div class="address">{{ location }}</div>
-            <div class="time">星期{{ dataToTraditional(weatherData[0].day) }}早上6:00</div>
+            <div class="time">星期{{ dataToTraditional(weatherData[0].day) }}</div>
           </div>
         </template>
       </div>
