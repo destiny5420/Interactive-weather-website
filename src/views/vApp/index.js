@@ -32,7 +32,10 @@ export default {
       dateConvertString: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
       dateConvertTraditional: ['日', '一', '二', '三', '四', '五', '六'],
       weatherData: null,
+      curWeather: null,
+      curHour: null,
       location: null,
+      darkDay: false,
     };
   },
   methods: {
@@ -48,6 +51,25 @@ export default {
           vm.loading.weather = false;
           vm.weatherData = response.data.data;
           vm.location = response.data.location;
+
+          switch (parseInt(vm.weatherData[0].value, 10)) {
+            case 1:
+              vm.curWeather = 'sun';
+              break;
+            case 2:
+            case 3:
+              vm.curWeather = 'sun-cloud';
+              break;
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+              vm.curWeather = 'cloud';
+              break;
+            default:
+              vm.curWeather = 'rain';
+              break;
+          }
         })
         .catch((err) => {
           vm.loading.weather = false;
@@ -115,6 +137,18 @@ export default {
         };
       },
     },
+    showWeatherIcon: {
+      get: function() {
+        const vm = this;
+        return function(name) {
+          if (vm.curWeather === name) {
+            return true;
+          }
+
+          return false;
+        };
+      },
+    },
     dateToString: {
       get: function() {
         const vm = this;
@@ -131,6 +165,17 @@ export default {
         };
       },
     },
+    styleTopBackground: {
+      get: function() {
+        const time = new Date();
+        const hours = time.getHours();
+        const percentage = hours / 24;
+        console.log('hours: ', hours, ' / percentage: ', percentage);
+        return {
+          'background-position-x': `${percentage * 100}%`,
+        };
+      },
+    },
   },
   // // life cycle
   beforeCreate: function() {},
@@ -139,6 +184,13 @@ export default {
   mounted: function() {
     this.getWeatherCallback();
     this.getTemperatureCallback();
+
+    const time = new Date();
+    this.curHour = time.getHours();
+
+    if (time.getHours() >= 18 || time.getHours() < 6) {
+      this.darkDay = true;
+    }
   },
   beforeUpdate: function() {},
   updated: function() {},

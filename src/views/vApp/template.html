@@ -1,17 +1,40 @@
 <div id="app">
   <div class="day-box">
     <cLoading :active.sync="isLoading" />
-    <div class="top">
-      <div class="moon"></div>
+    <div class="top" :style="styleTopBackground">
+      <div v-if="darkDay" class="moon"></div>
       <div class="weather">
-        <div class="cloud">
+        <div v-if="showWeatherIcon('rain')" class="raining">
           <div class="rain"></div>
           <div class="rain rain2"></div>
           <div class="rain rain3"></div>
         </div>
-        <div class="sun">
+        <div v-if="showWeatherIcon('sun')" class="sun">
           <svg viewBox="-75 -75 150 150">
             <circle cx="0" cy="0" r="45" />
+          </svg>
+        </div>
+        <div v-if="showWeatherIcon('sun-cloud')" class="sun-cloud">
+          <svg viewBox="-75 -75 150 150">
+            <circle cx="20" cy="-10" r="30" />
+            <g>
+              <circle cx="10" cy="10" r="25" />
+              <circle cx="-20" cy="0" r="25" />
+              <circle cx="-30" cy="25" r="25" />
+              <circle cx="30" cy="25" r="25" />
+              <rect x="-30" y="0" width="60" height="50"></rect>
+            </g>
+          </svg>
+        </div>
+        <div v-if="showWeatherIcon('cloud')" class="cloud">
+          <svg viewBox="-75 -75 150 150">
+            <g>
+              <circle cx="10" cy="0" r="25" />
+              <circle cx="-20" cy="-10" r="25" />
+              <circle cx="-30" cy="15" r="25" />
+              <circle cx="30" cy="15" r="25" />
+              <rect x="-30" y="-10" width="60" height="50"></rect>
+            </g>
           </svg>
         </div>
       </div>
