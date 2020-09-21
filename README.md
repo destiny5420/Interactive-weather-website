@@ -1,24 +1,7 @@
 # vue-interactive-weather
 
-## Project setup
-```
-npm install
-```
+![Banner](https://github.com/destiny5420/Interactive-weather-website/blob/develop/page_source/banner.png)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Demo
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[Weather](https://destiny5420.github.io/Interactive-weather-website/)
