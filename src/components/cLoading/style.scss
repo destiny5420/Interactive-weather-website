@@ -1,0 +1,21 @@
+@import '../../common/style/globalstyle';
+
+.loading-box {
+  @include independent('', rgba(black, 0.75), 1000);
+  @include size(100%, 100%);
+  @include flex-layout(row, center, center);
+  transition: 0.5s;
+  pointer-events: auto;
+}
+
+.loading {
+  @include size(30px, 30px);
+
+  rect {
+    fill: #2f76fa;
+  }
+}
+
+.un-active {
+  opacity: 0;
+}

@@ -1,6 +1,11 @@
 export default {
-  name: '{{ $javascriptName }}',
-  props: {},
+  name: 'cDayWeather-sun-cloud',
+  props: {
+    day: {
+      type: String,
+      required: true,
+    },
+  },
   components: {},
   data: function() {
     return {};

@@ -1,0 +1,431 @@
+@import '../../common/style/globalstyle';
+
+* {
+  font-family: 'Hind Vadodara', sans-serif, '微軟正黑體';
+}
+
+#app {
+  @include size(100vw, 100vh);
+  @include flex-layout();
+  background-color: $color_black;
+}
+
+.day-box {
+  @include size(50%, auto);
+  position: relative;
+  max-width: 400px;
+  background-color: $color_white;
+  box-shadow: 0px 0px 20px rgba($color: black, $alpha: 0.3);
+  border-radius: 10px;
+  cursor: pointer;
+
+  @include phone-width() {
+    @include size(95%, auto);
+    &:hover {
+    }
+  }
+
+  &:hover {
+    .tem-svg {
+      circle {
+        opacity: 1;
+      }
+
+      polyline {
+        opacity: 1;
+      }
+
+      text {
+        opacity: 1;
+        top: 0px;
+        transition-delay: 0.5s;
+      }
+
+      line {
+        opacity: 1;
+      }
+    }
+
+    .bottom {
+      height: 100px;
+    }
+
+    .day-weather {
+      opacity: 1;
+      top: 0;
+    }
+
+    .day-weather:nth-child(1) {
+      transition-delay: 0.08s;
+    }
+
+    .day-weather:nth-child(2) {
+      transition-delay: 0.16s;
+    }
+
+    .day-weather:nth-child(3) {
+      transition-delay: 0.24s;
+    }
+
+    .day-weather:nth-child(4) {
+      transition-delay: 0.32s;
+    }
+
+    .day-weather:nth-child(5) {
+      transition-delay: 0.4s;
+    }
+
+    .day-weather:nth-child(6) {
+      transition-delay: 0.48s;
+    }
+
+    .day-weather:nth-child(7) {
+      transition-delay: 0.56s;
+    }
+  }
+}
+
+.loading-box {
+  @include independent('', rgba(black, 0.75), 1000);
+  @include size(100%, 100%);
+  @include flex-layout(row, center, center);
+  border-radius: 5px;
+}
+
+.loading {
+  @include size(30px, 30px);
+
+  rect {
+    fill: #2f76fa;
+  }
+}
+
+.top {
+  @include size(100%, 330px);
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    rgba(45, 45, 45, 1) 0%,
+    rgba(146, 159, 167, 1) 25%,
+    rgba(191, 191, 191, 1) 50%,
+    rgba(194, 184, 164, 1) 75%,
+    rgba(45, 45, 45, 1) 100%
+  );
+  background-size: 2000% 100%;
+  background-position-x: 50%;
+  background-position-y: 100%;
+  border-radius: 5px 5px 0px 0px;
+
+  .weather {
+    @include independent('', transparent, 1);
+    @include size(150px, 150px);
+
+    right: 50px;
+    bottom: 50px;
+  }
+
+  .raining {
+    @include size(100px, 36px);
+    @include independent('', $color_white, 1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: relative;
+    box-shadow: 0px 0px 20px rgba($color: black, $alpha: 0.5);
+
+    border-radius: 20px;
+    animation: cloudDrift 5s infinite linear;
+
+    &::before,
+    &::after {
+      @include independent('', $color_white, 1);
+      @include size(50px, 50px);
+      content: '';
+      display: block;
+      border-radius: 100%;
+    }
+
+    &::before {
+      left: 16px;
+      top: -28px;
+    }
+
+    &::after {
+      left: 35px;
+      top: -20px;
+    }
+  }
+
+  .sun {
+    @include independent('', transparent, 1);
+    @include size(150px, 150px);
+    top: 50%;
+    left: 50%;
+    transform-origin: 0 0;
+    transform: rotateZ(0deg) translate(-50%, -50%);
+
+    animation: sunRotate 60s linear infinite;
+
+    svg {
+      @include size(150px, 150px);
+
+      circle {
+        fill: $color_yellow;
+        stroke: rgba($color: $color_yellow, $alpha: 0.75);
+        stroke-width: 35px;
+        stroke-dasharray: 5px;
+        animation: sunShineScale 2s ease-in-out infinite;
+      }
+    }
+  }
+
+  .sun-cloud {
+    @include independent('', transparent, 1);
+    @include size(150px, 150px);
+    top: 50%;
+    left: 50%;
+    transform-origin: 0 0;
+    animation: cloudDrift 10s infinite;
+
+    svg {
+      > circle {
+        fill: $color_yellow;
+        stroke: rgba($color: $color_yellow, $alpha: 0.35);
+        stroke-width: 25px;
+        stroke-dasharray: 3px;
+        transform-origin: 0px 0px;
+      }
+
+      g {
+        circle {
+          fill: $color_grey_cloud;
+        }
+
+        rect {
+          fill: $color_grey_cloud;
+        }
+      }
+    }
+  }
+
+  .cloud {
+    @include independent('', transparent, 1);
+    @include size(150px, 150px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: cloudDrift 5s infinite;
+    svg {
+      fill: $color_grey_cloud;
+      // box-shadow: 0px 0px 20px rgba($color: black, $alpha: 0.5);
+    }
+  }
+
+  @keyframes sunRotate {
+    0% {
+      transform: rotateZ(0deg) translate(-50%, -50%);
+    }
+
+    100% {
+      transform: rotateZ(360deg) translate(-50%, -50%);
+    }
+  }
+
+  @keyframes sunShineScale {
+    0% {
+      stroke-width: 35px;
+    }
+
+    50% {
+      stroke-width: 30px;
+    }
+
+    100% {
+      stroke-width: 35px;
+    }
+  }
+
+  @keyframes daylight {
+    0% {
+      background-position: 100% 30%;
+    }
+
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+
+  @keyframes cloudDrift {
+    0% {
+      transform: translateY(10px) translate(-50%, -50%);
+    }
+
+    50% {
+      transform: translateY(-5px) translate(-50%, -50%);
+    }
+
+    100% {
+      transform: translateY(10px) translate(-50%, -50%);
+    }
+  }
+}
+
+.moon {
+  @include independent('', transparent, 1);
+  @include size(50px, 50px);
+  left: 50px;
+  top: 100px;
+  border-radius: 100%;
+  box-shadow: 15px -15px $color_yellow;
+  animation: moonmove 20s infinite;
+}
+
+@keyframes moonmove {
+  0% {
+    box-shadow: 15px -15px $color_yellow;
+    transform: translateX(-15px) translateY(15px);
+  }
+
+  100% {
+    box-shadow: -30px 30px $color_yellow;
+    transform: translateX(30px) translateY(-30px);
+  }
+}
+
+.tem-svg {
+  @include size(100%, 100%);
+  circle {
+    fill: $color_white;
+
+    transition: 0.5s;
+    opacity: 0.2;
+  }
+
+  polyline {
+    stroke: $color_white;
+    stroke-width: 1px;
+    fill: none;
+
+    transition: 1.5s;
+    opacity: 0.2;
+  }
+
+  text {
+    fill: $color_white;
+    transform: translateX(-6px) translateY(22px);
+    font-size: 12px;
+
+    transition: 0.75s;
+    opacity: 0;
+  }
+
+  line {
+    stroke: #fff;
+    stroke-width: 1px;
+    transition: 0.75s;
+    opacity: 0;
+  }
+}
+
+.rain {
+  @include independent('', $color_white, 1);
+  @include size(2px, 10px);
+  top: 15px;
+  left: 45px;
+
+  animation: rainDrop 1s infinite linear;
+}
+
+.rain2 {
+  top: 20px;
+  left: 70px;
+  animation-delay: -0.4s;
+}
+
+.rain3 {
+  top: 20px;
+  left: 30px;
+  animation-delay: -0.7s;
+}
+
+@keyframes rainDrop {
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+}
+
+.text-area {
+  @include independent('', transparent, 1);
+  color: $color_white;
+  display: inline-block;
+  left: 25px;
+  bottom: 25px;
+
+  & .temperature {
+    font-size: 75px;
+    line-height: 80px;
+  }
+
+  & .info {
+    font-size: 13px;
+    opacity: 0.5;
+  }
+}
+
+.bottom {
+  @include size(100%, 10px);
+  // @include flex-layout(row, c, center);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0px 0px 20px rgba($color: black, $alpha: 0.3);
+  border-radius: 0px 0px 5px 5px;
+  transition-duration: 0.5s;
+}
+
+.day-weather {
+  @include size(calc(100% / 7 - 5px), auto);
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  opacity: 0;
+  top: 20px;
+  transition: 0.5s;
+  transition-delay: 0s;
+
+  h3 {
+    @include size(100%, 20px);
+    margin: 5px 0px;
+    font-size: 12px;
+    color: rgba($color: $color_black, $alpha: 0.6);
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  svg {
+    @include size(100%, 40px);
+    max-width: 40px;
+
+    .sun {
+      fill: rgba($color: $color_yellow, $alpha: 1);
+      stroke: rgba($color: $color_yellow, $alpha: 0.5);
+      stroke-width: 30px;
+      stroke-dasharray: 5px;
+    }
+
+    .rain {
+      stroke: $color_rain;
+      stroke-width: 5px;
+    }
+
+    .cloud {
+      fill: rgba($color: $color_grey_cloud, $alpha: 1);
+    }
+  }
+}

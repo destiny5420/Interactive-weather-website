@@ -1,0 +1,105 @@
+// ***** Layout *****
+// pc3-width
+$pc3-media: 1920px;
+
+// pc2-width
+$pc3s-media: 1919px;
+$pc2-media: 1280px;
+
+// pc-width
+$pc2s-media: 1279px;
+$pc-media: 960px;
+
+// pad-width
+$pcs-media: 959px;
+$pad-media: 760px;
+
+// small-pad-width
+$pads-media: 759px;
+$phone-media: 480px;
+
+// phone-width
+$phones-media: 479px;
+
+// 電腦3
+@mixin pc3-width {
+  @media all and (min-width: $pc3-media) {
+    @content;
+  }
+}
+
+// 電腦2
+@mixin pc2-width {
+  @media all and (min-width: $pc2-media) and (max-width: $pc3s-media) {
+    @content;
+  }
+}
+
+// 電腦
+@mixin pc-width {
+  @media all and (min-width: $pc-media) and (max-width: $pc2s-media) {
+    @content;
+  }
+}
+
+// 平板
+@mixin pad-width {
+  @media all and (min-width: $pad-media) and (max-width: $pcs-media) {
+    @content;
+  }
+}
+
+// 小平板
+@mixin small-pad-width {
+  @media all and (min-width: $phone-media) and (max-width: $pads-media) {
+    @content;
+  }
+}
+// 手機
+@mixin phone-width {
+  @media all and (max-width: $phones-media) {
+    @content;
+  }
+}
+
+// ***** Property *****
+$color_white: #f3f3f3;
+$color_yellow: #ffd633;
+$color_black: #333;
+$color_blue_start: #19283d;
+$color_blue_end: #1d678f;
+$color_rain: #4dacff;
+$color_white_cloud: #f2f9fe;
+$color_grey_cloud: #ccc;
+
+// ***** Fonts *****
+@import url('https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@300;400;500;600&display=swap');
+
+// Mixin
+@mixin size($width: 100%, $height: 100%) {
+  width: $width;
+  height: $height;
+}
+
+@mixin flex-layout($dir: row, $justify-content: center, $align-items: center) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin border($width: 1px, $type: solid, $color: black) {
+  border: $width $type $color;
+}
+
+@mixin stroke($color: black, $width: 1px) {
+  stroke: $color;
+  stroke-width: $width;
+}
+
+@mixin independent($content: '', $color: red, $z-index: 1) {
+  position: absolute;
+  content: $content;
+  background-color: $color;
+  z-index: $z-index;
+}
