@@ -49,7 +49,7 @@ export default {
         url: `${process.env.VUE_APP_HOST}/get-weather`,
       })
         .then((response) => {
-          console.log('Weather: ', response);
+          // console.log('Weather: ', response);
           vm.loading.weather = false;
           vm.weatherData = response.data.data;
           vm.location = response.data.location;
@@ -86,7 +86,7 @@ export default {
         url: `${process.env.VUE_APP_HOST}/get-temperature`,
       })
         .then((response) => {
-          console.log('Temperature: ', response);
+          // console.log('Temperature: ', response);
           vm.loading.temperature = false;
           for (let i = 0; i < response.data.data.length; i += 1) {
             const value = parseInt(response.data.data[i].value, 10);
@@ -100,7 +100,6 @@ export default {
     },
     onDayBoxHandler: function() {
       const vm = this;
-      console.log('-- onDayBoxHandler -- / vm.dayBoxClick: ', vm.dayBoxClick);
       vm.dayBoxClick = !vm.dayBoxClick;
     },
   },
