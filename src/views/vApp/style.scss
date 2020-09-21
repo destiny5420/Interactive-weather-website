@@ -19,69 +19,128 @@
   border-radius: 10px;
   cursor: pointer;
 
-  @include phone-width() {
-    @include size(95%, auto);
+  @include all-pc-width() {
     &:hover {
+      .tem-svg {
+        circle {
+          opacity: 1;
+        }
+
+        polyline {
+          opacity: 1;
+        }
+
+        text {
+          opacity: 1;
+          top: 0px;
+          transition-delay: 0.5s;
+        }
+
+        line {
+          opacity: 1;
+        }
+      }
+
+      .bottom {
+        height: 100px;
+      }
+
+      .day-weather {
+        opacity: 1;
+        top: 0;
+      }
+
+      .day-weather:nth-child(1) {
+        transition-delay: 0.08s;
+      }
+
+      .day-weather:nth-child(2) {
+        transition-delay: 0.16s;
+      }
+
+      .day-weather:nth-child(3) {
+        transition-delay: 0.24s;
+      }
+
+      .day-weather:nth-child(4) {
+        transition-delay: 0.32s;
+      }
+
+      .day-weather:nth-child(5) {
+        transition-delay: 0.4s;
+      }
+
+      .day-weather:nth-child(6) {
+        transition-delay: 0.48s;
+      }
+
+      .day-weather:nth-child(7) {
+        transition-delay: 0.56s;
+      }
     }
   }
 
-  &:hover {
-    .tem-svg {
-      circle {
-        opacity: 1;
-      }
+  @include phone-width() {
+    @include size(95%, auto);
+  }
+}
 
-      polyline {
-        opacity: 1;
-      }
-
-      text {
-        opacity: 1;
-        top: 0px;
-        transition-delay: 0.5s;
-      }
-
-      line {
-        opacity: 1;
-      }
-    }
-
-    .bottom {
-      height: 100px;
-    }
-
-    .day-weather {
+.day-box-hover {
+  .tem-svg {
+    circle {
       opacity: 1;
-      top: 0;
     }
 
-    .day-weather:nth-child(1) {
-      transition-delay: 0.08s;
+    polyline {
+      opacity: 1;
     }
 
-    .day-weather:nth-child(2) {
-      transition-delay: 0.16s;
+    text {
+      opacity: 1;
+      top: 0px;
+      transition-delay: 0.5s;
     }
 
-    .day-weather:nth-child(3) {
-      transition-delay: 0.24s;
+    line {
+      opacity: 1;
     }
+  }
 
-    .day-weather:nth-child(4) {
-      transition-delay: 0.32s;
-    }
+  .bottom {
+    height: 100px;
+  }
 
-    .day-weather:nth-child(5) {
-      transition-delay: 0.4s;
-    }
+  .day-weather {
+    opacity: 1;
+    top: 0;
+  }
 
-    .day-weather:nth-child(6) {
-      transition-delay: 0.48s;
-    }
+  .day-weather:nth-child(1) {
+    transition-delay: 0.08s;
+  }
 
-    .day-weather:nth-child(7) {
-      transition-delay: 0.56s;
-    }
+  .day-weather:nth-child(2) {
+    transition-delay: 0.16s;
+  }
+
+  .day-weather:nth-child(3) {
+    transition-delay: 0.24s;
+  }
+
+  .day-weather:nth-child(4) {
+    transition-delay: 0.32s;
+  }
+
+  .day-weather:nth-child(5) {
+    transition-delay: 0.4s;
+  }
+
+  .day-weather:nth-child(6) {
+    transition-delay: 0.48s;
+  }
+
+  .day-weather:nth-child(7) {
+    transition-delay: 0.56s;
   }
 }
 

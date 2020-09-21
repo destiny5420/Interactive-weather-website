@@ -21,6 +21,12 @@ $phone-media: 480px;
 // phone-width
 $phones-media: 479px;
 
+@mixin all-pc-width {
+  @media all and (min-width: $pc-media) {
+    @content;
+  }
+}
+
 // 電腦3
 @mixin pc3-width {
   @media all and (min-width: $pc3-media) {

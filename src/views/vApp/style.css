@@ -35,6 +35,59 @@
   cursor: pointer;
 }
 
+@media all and (min-width: 960px) {
+  .day-box:hover .tem-svg circle {
+    opacity: 1;
+  }
+  .day-box:hover .tem-svg polyline {
+    opacity: 1;
+  }
+  .day-box:hover .tem-svg text {
+    opacity: 1;
+    top: 0px;
+    -webkit-transition-delay: 0.5s;
+            transition-delay: 0.5s;
+  }
+  .day-box:hover .tem-svg line {
+    opacity: 1;
+  }
+  .day-box:hover .bottom {
+    height: 100px;
+  }
+  .day-box:hover .day-weather {
+    opacity: 1;
+    top: 0;
+  }
+  .day-box:hover .day-weather:nth-child(1) {
+    -webkit-transition-delay: 0.08s;
+            transition-delay: 0.08s;
+  }
+  .day-box:hover .day-weather:nth-child(2) {
+    -webkit-transition-delay: 0.16s;
+            transition-delay: 0.16s;
+  }
+  .day-box:hover .day-weather:nth-child(3) {
+    -webkit-transition-delay: 0.24s;
+            transition-delay: 0.24s;
+  }
+  .day-box:hover .day-weather:nth-child(4) {
+    -webkit-transition-delay: 0.32s;
+            transition-delay: 0.32s;
+  }
+  .day-box:hover .day-weather:nth-child(5) {
+    -webkit-transition-delay: 0.4s;
+            transition-delay: 0.4s;
+  }
+  .day-box:hover .day-weather:nth-child(6) {
+    -webkit-transition-delay: 0.48s;
+            transition-delay: 0.48s;
+  }
+  .day-box:hover .day-weather:nth-child(7) {
+    -webkit-transition-delay: 0.56s;
+            transition-delay: 0.56s;
+  }
+}
+
 @media all and (max-width: 479px) {
   .day-box {
     width: 95%;
@@ -42,65 +95,65 @@
   }
 }
 
-.day-box:hover .tem-svg circle {
+.day-box-hover .tem-svg circle {
   opacity: 1;
 }
 
-.day-box:hover .tem-svg polyline {
+.day-box-hover .tem-svg polyline {
   opacity: 1;
 }
 
-.day-box:hover .tem-svg text {
+.day-box-hover .tem-svg text {
   opacity: 1;
   top: 0px;
   -webkit-transition-delay: 0.5s;
           transition-delay: 0.5s;
 }
 
-.day-box:hover .tem-svg line {
+.day-box-hover .tem-svg line {
   opacity: 1;
 }
 
-.day-box:hover .bottom {
+.day-box-hover .bottom {
   height: 100px;
 }
 
-.day-box:hover .day-weather {
+.day-box-hover .day-weather {
   opacity: 1;
   top: 0;
 }
 
-.day-box:hover .day-weather:nth-child(1) {
+.day-box-hover .day-weather:nth-child(1) {
   -webkit-transition-delay: 0.08s;
           transition-delay: 0.08s;
 }
 
-.day-box:hover .day-weather:nth-child(2) {
+.day-box-hover .day-weather:nth-child(2) {
   -webkit-transition-delay: 0.16s;
           transition-delay: 0.16s;
 }
 
-.day-box:hover .day-weather:nth-child(3) {
+.day-box-hover .day-weather:nth-child(3) {
   -webkit-transition-delay: 0.24s;
           transition-delay: 0.24s;
 }
 
-.day-box:hover .day-weather:nth-child(4) {
+.day-box-hover .day-weather:nth-child(4) {
   -webkit-transition-delay: 0.32s;
           transition-delay: 0.32s;
 }
 
-.day-box:hover .day-weather:nth-child(5) {
+.day-box-hover .day-weather:nth-child(5) {
   -webkit-transition-delay: 0.4s;
           transition-delay: 0.4s;
 }
 
-.day-box:hover .day-weather:nth-child(6) {
+.day-box-hover .day-weather:nth-child(6) {
   -webkit-transition-delay: 0.48s;
           transition-delay: 0.48s;
 }
 
-.day-box:hover .day-weather:nth-child(7) {
+.day-box-hover .day-weather:nth-child(7) {
   -webkit-transition-delay: 0.56s;
           transition-delay: 0.56s;
 }
