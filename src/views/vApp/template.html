@@ -1,5 +1,9 @@
 <div id="app">
-  <div class="day-box">
+  <div
+    class="day-box"
+    :class="{ 'day-box-hover': dayBoxClick === true ? true : false }"
+    @click="onDayBoxHandler"
+  >
     <cLoading :active.sync="isLoading" />
     <div class="top" :style="styleTopBackground">
       <div v-if="darkDay" class="moon"></div>

@@ -37,6 +37,7 @@ export default {
       location: null,
       darkDay: false,
       deviceIsMobile: true,
+      dayBoxClick: false,
     };
   },
   methods: {
@@ -96,6 +97,11 @@ export default {
           vm.loading.temperature = false;
           console.error(err);
         });
+    },
+    onDayBoxHandler: function() {
+      const vm = this;
+      console.log('-- onDayBoxHandler -- / vm.dayBoxClick: ', vm.dayBoxClick);
+      vm.dayBoxClick = !vm.dayBoxClick;
     },
   },
   computed: {
