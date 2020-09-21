@@ -35,6 +35,13 @@
   cursor: pointer;
 }
 
+@media all and (max-width: 479px) {
+  .day-box {
+    width: 95%;
+    height: auto;
+  }
+}
+
 .day-box:hover .tem-svg circle {
   opacity: 1;
 }

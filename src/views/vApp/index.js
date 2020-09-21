@@ -17,14 +17,15 @@ export default {
   data: function() {
     return {
       points: [
-        { x: 40, value: 20 },
-        { x: 90, value: 23 },
-        { x: 140, value: 28 },
-        { x: 190, value: 27.5 },
-        { x: 240, value: 22 },
-        { x: 290, value: 29 },
-        { x: 340, value: 20 },
+        { x: 0, value: 20 },
+        { x: 0, value: 23 },
+        { x: 0, value: 28 },
+        { x: 0, value: 27.5 },
+        { x: 0, value: 22 },
+        { x: 0, value: 29 },
+        { x: 0, value: 20 },
       ],
+      desktopPoints: [40, 90, 140, 190, 240, 290, 340],
       loading: {
         weather: false,
         temperature: false,
@@ -33,9 +34,9 @@ export default {
       dateConvertTraditional: ['日', '一', '二', '三', '四', '五', '六'],
       weatherData: null,
       curWeather: null,
-      curHour: null,
       location: null,
       darkDay: false,
+      deviceIsMobile: true,
     };
   },
   methods: {
@@ -170,7 +171,6 @@ export default {
         const time = new Date();
         const hours = time.getHours();
         const percentage = hours / 24;
-        console.log('hours: ', hours, ' / percentage: ', percentage);
         return {
           'background-position-x': `${percentage * 100}%`,
         };
@@ -182,14 +182,39 @@ export default {
   created: function() {},
   beforeMounted: function() {},
   mounted: function() {
-    this.getWeatherCallback();
-    this.getTemperatureCallback();
+    const vm = this;
+    // Get weather info
+    vm.getWeatherCallback();
 
+    // Get temperature info
+    vm.getTemperatureCallback();
+
+    // Setting if dark-day
     const time = new Date();
-    this.curHour = time.getHours();
-
     if (time.getHours() >= 18 || time.getHours() < 6) {
-      this.darkDay = true;
+      vm.darkDay = true;
+    }
+
+    // Detecting is mobile ?
+    function isMobile() {
+      try {
+        document.createEvent('TouchEvent');
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    if (isMobile()) {
+      vm.deviceIsMobile = true;
+      for (let i = 0; i < vm.points.length; i += 1) {
+        vm.points[i].x = vm.desktopPoints[i] - 12;
+      }
+    } else {
+      vm.deviceIsMobile = false;
+      for (let i = 0; i < vm.points.length; i += 1) {
+        vm.points[i].x = vm.desktopPoints[i];
+      }
     }
   },
   beforeUpdate: function() {},

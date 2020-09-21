@@ -19,6 +19,12 @@
   border-radius: 10px;
   cursor: pointer;
 
+  @include phone-width() {
+    @include size(95%, auto);
+    &:hover {
+    }
+  }
+
   &:hover {
     .tem-svg {
       circle {
