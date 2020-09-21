@@ -1,24 +1,26 @@
 # vue-interactive-weather
 
-## Project setup
-```
-npm install
-```
+![Banner](https://github.com/destiny5420/Interactive-weather-website/blob/develop/page_source/banner.png)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Demo
 
-### Compiles and minifies for production
-```
-npm run build
-```
+[Weather](https://destiny5420.github.io/Interactive-weather-website/)
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Introduction
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+This project uses many interactive elements to construct, the following main feature:
+
+- Front-end use Vue framework.
+- Create sun、cloud and rain by svg tag.
+- Use css to create animation.
+- Build the nodejs server to get data from [Central Weather Service of Taiwan](https://opendata.cwb.gov.tw/devManual/insrtuction)
+
+## Content
+
+### Idle
+
+![Idle-1](https://github.com/destiny5420/Interactive-weather-website/blob/develop/page_source/pic_01.png)
+
+### Active
+
+![Active-1](https://github.com/destiny5420/Interactive-weather-website/blob/develop/page_source/pic_02.png)
